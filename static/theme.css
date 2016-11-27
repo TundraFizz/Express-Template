@@ -1,0 +1,27 @@
+body {
+  width:            100vw;
+  height:           100vh;
+  margin:           0;
+  overflow:         hidden;
+  background-color: black;
+}
+
+.take-my-energy {
+  position:          relative;
+  text-align:        center;
+  white-space:       nowrap;
+  font-size:         300px; /* Backup font-size */
+  font-size:         20vw;
+  left:              50%;
+  top:               50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform:         translate(-50%, -50%);
+
+  cursor: default;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
