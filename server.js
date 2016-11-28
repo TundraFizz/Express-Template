@@ -1,32 +1,27 @@
-var express = require("express");
-var app = express();
-
-// var path = require("path");
+var express = require("express");               // Require express
+var app = express();                            // Define app
 app.use(express.static(__dirname + "/static")); // Define the static directory
+app.set("views", __dirname + "/views");         // Define the views directory
+app.set("view engine", "ejs");                  // Set the view engine to ejs
 
-app.set("views", __dirname + "/views")
-app.set("view engine", "ejs"); // Set the view engine to ejs
-
-
-// app.use(function(req, res) {
-//   // res.render("pages/404.ejs");
-//   // res.sendFile(path.join(__dirname + "/views/pages/404.ejs"), 404);
-// });
-
+// Index
 app.get("/", function(req, res) {
-//res.sendFile(path.join(__dirname + "/index.html"));
-  // res.render("pages/index.ejs");
-  var drinks = [
-      { name: "Bloody Mary", drunkness: 3 },
-      { name: "Martini", drunkness: 5 },
-      { name: "Scotch", drunkness: 10 }
+  var people = [
+    {name: "Adam", age: 10},
+    {name: "Bob",  age: 12},
+    {name: "Carl", age: 15}
   ];
-  var tagline = "Any code of your own that you haven't looked at for six or more months might as well have been written by someone else.";
+  var string = "This is a string that was defined on the server and passed to the client.";
 
-  res.render("pages/index", {
-      drinks: drinks,
-      tagline: tagline
+  res.render("pages/index.ejs", {
+    people: people,
+    string: string
   });
+});
+
+// 404: No route or file exists
+app.use(function (req, res) {
+  res.render("pages/404.ejs");
 });
 
 app.listen(9001);

@@ -5,25 +5,37 @@
     <meta charset="utf-8">
     <meta name="description"  content="This is the index">
     <meta name="author"       content="Tundra Fizz">
-    <link rel="shortcut icon" href="img/icon.jpg">
-    <link rel="stylesheet"    href="css/theme.css">
+    <link rel="shortcut icon" href="/img/icon.jpg">
+    <link rel="stylesheet"    href="/css/theme.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
   </head>
 
   <body>
     <div class="content">
-      Sample stuff.
-      <h2>Variable</h2>
-      <p><%= tagline %></p>
+      <%= string %>
 
-      <h2>Loop</h2>
+<!--  <h1>For Each</h1>
       <ul>
-        <% drinks.forEach(function(drink) { %>
-          <li><%= drink.name %> - <%= drink.drunkness %></li>
+        <% people.forEach(function(drink) { %>
+          <li><%= drink.name %> - <%= people.age %></li>
         <% }); %>
-      </ul>
+      </ul> -->
 
-      <h2>For Loop</h2>
+      <h1>Table</h1>
+      <table border="1">
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+        </tr>
+        <% for(var i = 0; i < people.length; i++) { %>
+          <tr>
+            <td><%= people[i].name %></td>
+            <td><%= people[i].age %></td>
+          </tr>
+        <% } %>
+      </table>
+
+      <h1>For Loop</h1>
       <ul>
         <% for(var i = 0; i < 10; ++i) { %>
           <li><%= i %></li>
