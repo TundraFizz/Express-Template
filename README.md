@@ -8,9 +8,11 @@
 ---
 ### **1. Brief Overview**
 
-To install, run this command after cloning the project.
+To install the project, run these three commands:
 
 ```bash
+sudo yum -y install git
+git clone https://github.com/TundraFizz/NodeJS-Template.git .
 bash install.sh
 ```
 
