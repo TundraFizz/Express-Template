@@ -4,22 +4,20 @@
 # https://nodejs.org/en/download/package-manager/ #
 ###################################################
 
-sudo yum -y update
-sudo yum -y install gcc
-curl https://raw.githubusercontent.com/creationix/nvm/v0.13.1/install.sh | bash
-# Logout and then log back in
+sudo yum -y update                                # Update the machine
+sudo yum -y install gcc                           # Install GCC
 
-sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080 # Redirect port 80 to 8080
+sudo yum -y install nodejs npm --enablerepo=epel  # Install nodejs and npm
+# OLD (requires you to logout and back in which is ANNOYING!)
+# curl https://raw.githubusercontent.com/creationix/nvm/v0.13.1/install.sh | bash
+
+sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 9000 # Redirect port 80 to 9000
 sudo iptables-save                                                              # Save the IP tables
+# ^ This doesn't actually save it for when the machine restarts...
+#   ...so I must find a different solution!
 
-# git clone https://github.com/TundraFizz/NodeJS-Template.git # Clone from repository
-# cd NodeJS-Template Go into the directory
-npm install
-node server.js
-
-# OLD
-# npm install express --save # Install Express in the myapp directory and save it in the dependencies list
-# node server.js             # Start up the server
+npm install                                                   # Install the project
+node server.js                                                # Startup the server (nohup)
 
 #########
 # NGINX #
