@@ -5,44 +5,17 @@
     <meta name="viewport"     content="width=device-width, initial-scale=1.0">
     <meta name="description"  content="Cloud Nine Take My Energy">
     <meta name="author"       content="Tundra Fizz">
-    <link rel="shortcut icon" href="http://takemyener.gy/static/c9.png">
-    <link rel="stylesheet"    href="http://takemyener.gy/static/theme.css">
+    <link rel="shortcut icon" href="../static/c9.png">
+    <link rel="stylesheet"    href="../static/theme.css">
     <title>Take My Energy!</title>
   </head>
 
   <body>
-    <div class="take-my-energy">༼ つ ◕_◕ ༽つ</div>
+    <div class="testing">Sample stuff.</div>
   </body>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 </html>
 
 <script>
-
-var step    = 4;                    // Step amount for changing the color
-var ms      = 10;                   // Loop every X amount of milliseconds
-var $uni    = $(".take-my-energy"); // The selection to colorize
-var txt     = $uni.text();          // The text inside of the selection
-var len     = txt.length;           // How many characters are within the text
-var lev     = 360/len;              // Hue
-var newCont = "";                   // New content that will replace the current text
-
-for(var i=0; i<len; i++)
-{
-  newCont += "<span style='color:hsla("+ i*lev +", 100%, 50%, 1)'>"+ txt.charAt(i) +"</span>";
-}
-
-$uni.html(newCont);          // Replace the current content with new content
-var $ch = $uni.find("span"); // Define a character
-
-
-setInterval(function()
-{
-  $ch.each(function()
-  {
-    var h = +$(this).attr("style").split(",")[0].split("(")[1]-step % 360;
-    $(this).attr({style:"color:hsla("+ h +", 100%, 50%, 1)"});
-  });
-}, ms);
-
 </script>
