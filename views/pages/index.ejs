@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>NodeJS Example</title>
+    <meta charset="utf-8">
+    <meta name="description"  content="This is the index">
+    <meta name="author"       content="Tundra Fizz">
+    <link rel="shortcut icon" href="img/icon.jpg">
+    <link rel="stylesheet"    href="css/theme.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <div class="content">
+      Sample stuff.
+      <h2>Variable</h2>
+      <p><%= tagline %></p>
+
+      <h2>Loop</h2>
+      <ul>
+        <% drinks.forEach(function(drink) { %>
+          <li><%= drink.name %> - <%= drink.drunkness %></li>
+        <% }); %>
+      </ul>
+
+      <h2>For Loop</h2>
+      <ul>
+        <% for(var i = 0; i < 10; ++i) { %>
+          <li><%= i %></li>
+        <% } %>
+      </ul>
+    </div>
+  </body>
+</html>

@@ -1,12 +1,12 @@
 /* Load custom fonts */
 @font-face {
   font-family: days-sans;
-  src: url(../static/days_sans.otf);
+  src: url(../fonts/days_sans.otf);
 }
 
 @font-face {
   font-family: droid-sans;
-  src: url(../static/droid_sans.ttf);
+  src: url(../fonts/droid_sans.ttf);
 }
 
 /* 500+ */
