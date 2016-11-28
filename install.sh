@@ -16,8 +16,12 @@ sudo iptables-save                                                              
 # ^ This doesn't actually save it for when the machine restarts...
 #   ...so I must find a different solution!
 
-npm install                                                   # Install the project
-node server.js                                                # Startup the server (nohup)
+npm install nodemon -g       # Install nodemon globally
+npm install                  # Install the project
+
+# Choose one of the two
+node server.js               # PRODUCTION: Start the server (nohup)
+nodemon server.js            # DEVELOPMENT: The server will automatically restart when changes are made
 
 #########
 # NGINX #
