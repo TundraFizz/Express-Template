@@ -1,0 +1,20 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "This is a description.",
+  "main": "server.js",
+  "author": "Tundra Fizz",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "ejs": "^1.0.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TundraFizz/NodeJS-Template.git"
+  }
+}
