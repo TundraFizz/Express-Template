@@ -4,6 +4,12 @@ app.use(express.static(__dirname + "/static")); // Define the static directory
 app.set("views", __dirname + "/views");         // Define the views directory
 app.set("view engine", "ejs");                  // Set the view engine to ejs
 
+// POST
+app.post('/customers', function(req, res) {
+  var customers = [{firstName:'Peter', lastName: 'Pan', age:13},{firstName:'Captain', lastName:'Hook', age:35}];
+  res.json(customers);
+});
+
 // Index
 app.get("/", function(req, res) {
   var people = [
@@ -17,6 +23,11 @@ app.get("/", function(req, res) {
     people: people,
     string: string
   });
+});
+
+// About
+app.get("/about", function(req, res) {
+  res.render("pages/about.ejs");
 });
 
 // 404: No route or file exists
