@@ -33,20 +33,32 @@
           </tr>
         </table>
       </form>
-      <table id="results" border="1"></table>
+
+      <table id="results" border="1">
+
+      </table>
     </div>
   </body>
 </html>
 
 <script>
+$(document).ready(function() {
+  var people = <%- JSON.stringify(people) %>;
+  BuildTable(people);
+});
+
 function SubmitForm(event) {
   var data = {name: "Adam", age: "10"};
   $.post("customers", data, function(data) {
-    var h = "<tr><th>First Name</th><th>Last Name</th><th>Age</th></tr>";
-    $(data).each(function(i) {
-      h += "<tr><td>" + this.firstName + "</td><td>" + this.lastName + "</td><td>" + this.age + "</td></tr>";
-    });
-    $("#results").html(h);
+    BuildTable(data);
   }, "json");
+}
+
+function BuildTable(data) {
+  var h = "<tr><th>First Name</th><th>Last Name</th><th>Age</th></tr>";
+  $(data).each(function(i) {
+    h += "<tr><td>" + this.firstName + "</td><td>" + this.lastName + "</td><td>" + this.age + "</td></tr>";
+  });
+  $("#results").html(h);
 }
 </script>

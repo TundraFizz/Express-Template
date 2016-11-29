@@ -27,7 +27,9 @@ app.get("/", function(req, res) {
 
 // About
 app.get("/about", function(req, res) {
-  res.render("pages/about.ejs");
+  var people = [{"firstName": "a", "lastName": "b", "age": 12},
+                {"firstName": "c", "lastName": "d", "age": 34}];
+  res.render("pages/about.ejs", {people: people});
 });
 
 // 404: No route or file exists
