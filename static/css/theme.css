@@ -61,7 +61,7 @@ table {
 }
 
 code {
-  display:     inline-block;
+  display:     block;
   background:  gray;
   white-space: pre;
   font-family: monospace;

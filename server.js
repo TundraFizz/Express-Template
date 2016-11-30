@@ -8,25 +8,16 @@ app.use(express.static(__dirname + "/static"));   // Define the static directory
 app.set("views", __dirname + "/views");           // Define the views directory
 app.set("view engine", "ejs");                    // Set the view engine to ejs
 
-//////////////////////
-// POST: add-person //
-//////////////////////
-app.post('/add-person', function(req, res){
-  AppendToFile("data/people.csv", req.body);
-  var people = CsvToObject("data/people.csv");
-  res.json(people);
-});
-
 ///////////
 // Index //
 ///////////
 app.get("/", function(req, res){
+  var string = "A string from the server.";
   var people = [
     {name: "Adam", age: 10},
     {name: "Bob",  age: 12},
     {name: "Carl", age: 15}
   ];
-  var string = "A string from the server.";
 
   res.render("pages/index.ejs", {
     people: people,
@@ -42,14 +33,21 @@ app.get("/about", function(req, res){
   res.render("pages/about.ejs", {people: people});
 });
 
+//////////////////////
+// POST: add-person //
+//////////////////////
+app.post('/add-person', function(req, res){
+  AppendToFile("data/people.csv", req.body);
+  var people = CsvToObject("data/people.csv");
+  res.json(people);
+});
+
 //////////////////////////////////
 // 404: No route or file exists //
 //////////////////////////////////
 app.use(function (req, res){
   res.render("pages/404.ejs");
 });
-
-app.listen(9001);
 
 //////////////////////
 // Helper Functions //
@@ -76,3 +74,8 @@ function CsvToObject(file){
 
   return people;
 }
+
+//////////////////////
+// Start the server //
+//////////////////////
+app.listen(9001);
