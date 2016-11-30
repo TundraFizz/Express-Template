@@ -48,12 +48,31 @@
 /* Everything */
 body {
   display:          block;
-  width:            100vw;
-  height:           100vh;
   margin:           0;
   background-color: #ccc;
-  overflow:         hidden;
 }
+
+hr {
+  margin: 0px 10px;
+}
+
+table {
+  margin: 16px 0px;
+}
+
+code {
+  display:     inline-block;
+  background:  gray;
+  white-space: pre;
+  font-family: monospace;
+  overflow:    auto;
+  max-width:   100%;
+  padding:     4px;
+}
+
+bl {color: blue;}  /* Blue font for use in the <code> tag  */
+wh {color: white;} /* White font for use in the <code> tag */
+gr {color: lime;}  /* Green font for use in the <code> tag */
 
 #target input {
   border: 2px solid transparent;
@@ -73,10 +92,19 @@ body {
 }
 
 .content {
+  margin:      6px 12px;
   font-family: droid-sans;
 }
 
 .glow-red {
   border:    2px solid red;
   animation: border-pulsate 1s 2 alternate cubic-bezier(0.4, 0, 1, 1);
+}
+
+.error-404 {
+  display:          block;
+  width:            100vw;
+  height:           100vh;
+  margin:           0;
+  background-color: #ccc;
 }

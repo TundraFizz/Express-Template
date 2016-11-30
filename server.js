@@ -26,7 +26,7 @@ app.get("/", function(req, res){
     {name: "Bob",  age: 12},
     {name: "Carl", age: 15}
   ];
-  var string = "This is a string that was defined on the server and passed to the client.";
+  var string = "A string from the server.";
 
   res.render("pages/index.ejs", {
     people: people,
