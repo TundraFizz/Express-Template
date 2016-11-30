@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="/img/icon.jpg">
     <link rel="stylesheet"    href="/css/theme.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   </head>
 
   <body>
@@ -16,7 +17,7 @@
         <table>
           <tr>
             <td>First Name</td>
-            <td><input type="text" name="firstName"></td>
+            <td><input type="text" name="firstName" style="border: 2px solid transparent;"></td>
           </tr>
           <tr>
             <td>Last Name</td>
@@ -40,21 +41,47 @@
 </html>
 
 <script>
-$(document).ready(function() {
+$(document).ready(function(){
   var people = <%- JSON.stringify(people) %>;
   BuildTable(people);
 });
 
-function SubmitForm(event) {
-  var data = {name: "Adam", age: "10"};
-  $.post("customers", data, function(data) {
+function SubmitForm(event){
+  var data = {};
+  $("input").each(function(){
+    // Validate data
+    // $(this).addClass("glow-red");
+    // $(this).animate({
+    //   border: 2px solid transparent
+    // }, 1000, function(){
+    //   // Animation Complete
+    // });
+    $(this).animate({
+      "border-color": "red"
+    }, 500, "easeInQuad", function(){
+      $(this).animate({
+        "border-color": "transparent"
+      }, 500, "easeOutQuad");
+    });
+    // $(this).animate({
+    //   outlineColor: "red"
+    // }, 1000, function(){
+    //   // Animation complete.
+    // });
+
+    console.log($(this).parent());
+
+    data[$(this).attr("name")] = $(this).val();
+  });
+
+  $.post("add-person", data, function(data){
     BuildTable(data);
   }, "json");
 }
 
-function BuildTable(data) {
+function BuildTable(data){
   var h = "<tr><th>First Name</th><th>Last Name</th><th>Age</th></tr>";
-  $(data).each(function(i) {
+  $(data).each(function(i){
     h += "<tr><td>" + this.firstName + "</td><td>" + this.lastName + "</td><td>" + this.age + "</td></tr>";
   });
   $("#results").html(h);
