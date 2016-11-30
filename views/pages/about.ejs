@@ -42,48 +42,54 @@
 
 <script>
 $(document).ready(function(){
+  // Import the people variable and use it to build a table
   var people = <%- JSON.stringify(people) %>;
   BuildTable(people);
 });
 
 function SubmitForm(event){
-  var data = {};
+  var data  = {};
+  var valid = true;
+
+  // Go through each input tag
   $("input").each(function(){
-    // Validate data
-    // $(this).addClass("glow-red");
-    // $(this).animate({
-    //   border: 2px solid transparent
-    // }, 1000, function(){
-    //   // Animation Complete
-    // });
-    $(this).animate({
-      "border-color": "red"
-    }, 500, "easeInQuad", function(){
+    // Execute this statement if there is nothing in an input field
+    if(!$(this).val().trim()){
+      // Mark this form submission as no longer valid
+      valid = false;
+
+      // Animate a glowing red border over the invalid field
       $(this).animate({
-        "border-color": "transparent"
-      }, 500, "easeOutQuad");
-    });
-    // $(this).animate({
-    //   outlineColor: "red"
-    // }, 1000, function(){
-    //   // Animation complete.
-    // });
+        "border-color": "red"
+      }, 500, "easeInQuad", function(){
+        $(this).animate({
+          "border-color": "transparent"
+        }, 500, "easeOutQuad");
+      });
+    }
 
-    console.log($(this).parent());
-
+    // Record the value of the input into our data
     data[$(this).attr("name")] = $(this).val();
   });
 
-  $.post("add-person", data, function(data){
-    BuildTable(data);
-  }, "json");
+  // Send POST data to the server if all data is valid
+  if(valid){
+    $.post("add-person", data, function(data){
+      BuildTable(data);
+    }, "json");
+  }
 }
 
 function BuildTable(data){
-  var h = "<tr><th>First Name</th><th>Last Name</th><th>Age</th></tr>";
+  // Initialize html
+  var html = "<tr><th>First Name</th><th>Last Name</th><th>Age</th></tr>";
+
+  // Build the table using data from each object
   $(data).each(function(i){
-    h += "<tr><td>" + this.firstName + "</td><td>" + this.lastName + "</td><td>" + this.age + "</td></tr>";
+    html += "<tr><td>" + this.firstName + "</td><td>" + this.lastName + "</td><td>" + this.age + "</td></tr>";
   });
-  $("#results").html(h);
+
+  // Update the results table
+  $("#results").html(html);
 }
 </script>
