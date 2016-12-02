@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>NodeJS Example</title>
+    <meta charset="utf-8">
+    <meta name="description"  content="This is the about page">
+    <meta name="author"       content="Tundra Fizz">
+    <link rel="shortcut icon" href="/img/icon.jpg">
+    <link rel="stylesheet"    href="/css/theme.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  </head>
+
+  <body>
+    <div class="content">
+      <form id="target">
+        <table>
+          <tr>
+            <td>First Name</td>
+            <td><input type="text" name="firstName" style="border: 2px solid transparent;"></td>
+          </tr>
+          <tr>
+            <td>Last Name</td>
+            <td><input type="text" name="lastName"></td>
+          </tr>
+          <tr>
+            <td>Age</td>
+            <td><input type="text" name="age"></td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <button type="button" onclick="SubmitForm();" >Submit</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+
+      <table id="results" border="1"></table>
+    </div>
+  </body>
+</html>
+
+<script>
+$(document).ready(function(){
+  // Import the people variable and use it to build a table
+  var people = <%- JSON.stringify(people) %>;
+  BuildTable(people);
+});
+
+function SubmitForm(event){
+  var data  = {};
+  var valid = true;
+
+  // Go through each input tag
+  $("input").each(function(){
+    // Execute this statement if there is nothing in an input field
+    if(!$(this).val().trim()){
+      // Mark this form submission as no longer valid
+      valid = false;
+
+      // Animate a glowing red border over the invalid field
+      $(this).animate({
+        "border-color": "red"
+      }, 500, "easeInQuad", function(){
+        $(this).animate({
+          "border-color": "transparent"
+        }, 500, "easeOutQuad");
+      });
+    }
+
+    // Record the value of the input into our data
+    data[$(this).attr("name")] = $(this).val();
+  });
+
+  // Send POST data to the server if all data is valid
+  if(valid){
+    $.post("add-person", data, function(data){
+      BuildTable(data);
+    }, "json");
+  }
+}
+
+function BuildTable(data){
+  // Initialize html
+  var html = "<tr><th>First Name</th><th>Last Name</th><th>Age</th></tr>";
+
+  // Build the table using data from each object
+  $(data).each(function(i){
+    html += "<tr><td>" + this.firstName + "</td><td>" + this.lastName + "</td><td>" + this.age + "</td></tr>";
+  });
+
+  // Update the results table
+  $("#results").html(html);
+}
+</script>

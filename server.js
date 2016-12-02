@@ -6,7 +6,7 @@ app.use(bodyParser.urlencoded({extended: true})); // Setting for bodyParser
 app.use(bodyParser.json());                       // Setting for bodyParser
 app.use(express.static(__dirname + "/static"));   // Define the static directory
 app.set("views", __dirname + "/views");           // Define the views directory
-app.set("view engine", "ejs");                    // Set the view engine to ejs
+// app.set("view engine", "ejs");                    // Set the view engine to ejs
 
 //////////////////////
 // POST: add-person //
@@ -28,7 +28,7 @@ app.get("/", function(req, res){
   ];
   var string = "A string from the server.";
 
-  res.render("pages/index.ejs", {
+  res.render("index.ejs", {
     people: people,
     string: string
   });
@@ -39,14 +39,14 @@ app.get("/", function(req, res){
 ///////////
 app.get("/about", function(req, res){
   var people = CsvToObject("data/people.csv");
-  res.render("pages/about.ejs", {people: people});
+  res.render("about.ejs", {people: people});
 });
 
 //////////////////////////////////
 // 404: No route or file exists //
 //////////////////////////////////
 app.use(function (req, res){
-  res.render("pages/404.ejs");
+  res.render("404.ejs");
 });
 
 app.listen(9001);
