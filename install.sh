@@ -24,8 +24,8 @@ sudo yum -y install nodejs npm --enablerepo=epel  # Install nodejs and npm
 # Ask the user if they are going to do an advanced install with NGINX
 # If yes, redirect port 80 -> 9000
 # If no, redirect port 80 -> 9001
-echo "Advanced install with NGINX? If you"
-echo "don't know what to pick, choose no"
+echo "Install NGINX and set up reverse proxy?"
+echo "If you don't know what to pick, choose no"
 inquire "Yes or No"
 nginx=$?
 
@@ -35,32 +35,28 @@ if [[ $nginx == 1 ]]; then
 else
   # Redirect port 80 to 9001
   sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 9001
+
+  # Delete the NGINX configuration file since it's not needed
+  rm nginx.conf
 fi
 
 sudo npm install nodemon -g  # Install nodemon globally
 npm install                  # Install the project
 
-echo "Installation complete! You may now use"
-echo "one of the two commands to run your application:"
-echo "nohup node server.js &"
-echo "nodemon server.js"
+echo "Delete Git-related files?"
+echo "If you don't know what to pick, choose yes"
+inquire "Yes or No"
+git=$?
 
-# Choose one of the two
-# nohup node server.js &       # PRODUCTION: Start the server (nohup)
-# nodemon server.js            # DEVELOPMENT: The server will automatically restart when changes are made
+if [[ $git == 1 ]]; then
+  # Redirect port 80 to 9000
+  rm -rf .git
+  rm README.md
+fi
 
-#########
-# NGINX #
-#########
+echo "Installation complete!"
+echo "Start your application by executing this command:"
+echo ". start"
 
-# sudo yum -y install nginx            # Install NGINX
-# sudo chmod 777 /etc/nginx/nginx.conf # Give user permission to access nginx.conf
-# sudo nano /etc/nginx/nginx.conf      # Modify nginx.conf (example below)
-# sudo nginx                           # Start up NGINX
-
-####################
-# NGINX Management #
-####################
-# sudo nginx -s reload                                       # Do this command whenever you edit /etc/nginx/nginx.conf
-# sudo systemctl restart nginx                               # This restarts nginx
-# sudo top -c -p $(pgrep nginx | tr '\n' ',' | sed 's/.$//') # Force stop nginx
+# Delete this file
+rm -- "$0"
