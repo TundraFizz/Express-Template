@@ -18,6 +18,7 @@ inquire(){
 sudo yum -y update                                # Update the machine
 sudo yum -y install gcc                           # Install GCC
 
+sudo yum -y install epel-release                  # Install EPEL
 sudo yum -y install nodejs npm --enablerepo=epel  # Install nodejs and npm
 
 # Ask the user if they are going to do an advanced install with NGINX
