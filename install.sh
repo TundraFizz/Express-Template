@@ -42,7 +42,7 @@ fi
 clear
 echo "Installation complete!"
 echo "Start your application by executing this command:"
-echo ". start"
+echo ". server"
 
 # Delete this file
 rm -- "$0"
