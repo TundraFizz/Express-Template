@@ -7,7 +7,7 @@
 ---
 ### **1. Brief Overview**
 
-To install the project, run these three commands:
+To install the project, run these commands:
 
 ```bash
 sudo yum -y install git
