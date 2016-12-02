@@ -34,6 +34,7 @@ if [[ $choice == 1 ]]; then
   echo "Stop the application by executing this command:"
   echo ". stop"
   nohup node server.js &
+  rm nohup.out
 else
   # DEVELOPMENT
   clear
