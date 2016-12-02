@@ -1,5 +1,3 @@
-var helper = require("./helper.js");
-
 module.exports = function(app){
   //////////////////////////////////
   // 404: No route or file exists //

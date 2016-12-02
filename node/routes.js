@@ -1,13 +1,6 @@
-
-// global._ = require("./helper.js");
-// console.log(global._);
-// var global.hi = "Yolo";
-// console.log(global.hi);
-// console.log(hi);
-// console.log(TEST);
-
 module.exports = function(app){
-  var helper = require("./helper.js");
+  var lib = require("./func-parser.js"); // Include local libraries here
+
   ///////////
   // Index //
   ///////////
@@ -30,7 +23,8 @@ module.exports = function(app){
   // About //
   ///////////
   app.get("/about", function(req, res){
-    var people = CsvToObject("data/people.csv");
+    GlobalTestingFunction();
+    var people = lib.CsvToObject("data/people.csv");
     res.render("about.ejs", {people: people});
   });
 }
