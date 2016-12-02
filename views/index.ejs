@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>NodeJS Example</title>
+    <meta charset="utf-8">
+    <meta name="description"  content="This is the index">
+    <meta name="author"       content="Tundra Fizz">
+    <link rel="shortcut icon" href="/img/icon.jpg">
+    <link rel="stylesheet"    href="/css/theme.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <div class="content">
+      <p>Here is what the file structure looks like after installing this template.</p>
+      <p>
+        <code>NodeJS-Template
+├<bl>data</bl>           <gr>contains a .csv file that stores data to display to the user</gr>
+├<bl>node_modules</bl>   <gr>contains stuff needed for your app to run, don't bother looking in here</gr>
+├<bl>static</bl>         <gr>contains static files such as style sheets, JavaScript, images, fonts, etc.</gr>
+├<bl>views</bl>          <gr>contains .ejs files such as this one</gr>
+├<wh>.gitignore</wh>     <gr>this tells Git to ignore the node_modules folder because we don't need to worry about it</gr>
+├<wh>install.sh</wh>     <gr>you can delete this; used when installing the app</gr>
+├<wh>nginx.conf</wh>     <gr>nginx configuration file used for reverse proxy</gr>
+├<wh>package.json</wh>   <gr>you can delete this; used when installing the app</gr>
+├<wh>README.md</wh>      <gr>you can delete this; readme for Git</gr>
+└<wh>server.js</wh>      <gr>where the application will begin running</gr></code>
+      </p>
+    </div>
+
+    <hr>
+
+    <div class="content">
+      <p>You can pass in variables from the server such as the one below.</p>
+      <p style="color: red"><%= string %></p>
+    </div>
+
+    <hr>
+
+    <div class="content">
+      <p>This table is made using JavaScript logic and the "people" variable that was passed in from the server.</p>
+      <table border="1">
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+        </tr>
+        <% for(var i = 0; i < people.length; i++) { %>
+          <tr>
+            <td><%= people[i].name %></td>
+            <td><%= people[i].age %></td>
+          </tr>
+        <% } %>
+      </table>
+    </div>
+
+    <hr>
+
+    <div class="content">
+      <p>Click on <a href="about">this link</a> to go to the about page.</p>
+    </div>
+
+  </body>
+</html>
