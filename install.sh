@@ -15,6 +15,7 @@ inquire(){
   done
 }
 
+clear
 sudo yum -y update                                # Update the machine
 sudo yum -y install gcc                           # Install GCC
 
@@ -38,6 +39,7 @@ if [[ $git == 1 ]]; then
   rm nginx.conf
 fi
 
+clear
 echo "Installation complete!"
 echo "Start your application by executing this command:"
 echo ". start"
