@@ -16,7 +16,7 @@ sudo iptables-save                                                              
 # ^ This doesn't actually save it for when the machine restarts...
 #   ...so I must find a different solution!
 
-npm install nodemon -g       # Install nodemon globally
+sudo npm install nodemon -g  # Install nodemon globally
 npm install                  # Install the project
 
 # Choose one of the two
