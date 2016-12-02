@@ -1,6 +1,13 @@
-var helper = require("./helper.js");
+
+// global._ = require("./helper.js");
+// console.log(global._);
+// var global.hi = "Yolo";
+// console.log(global.hi);
+// console.log(hi);
+// console.log(TEST);
 
 module.exports = function(app){
+  var helper = require("./helper.js");
   ///////////
   // Index //
   ///////////
@@ -23,7 +30,7 @@ module.exports = function(app){
   // About //
   ///////////
   app.get("/about", function(req, res){
-    var people = helper.CsvToObject("data/people.csv");
+    var people = CsvToObject("data/people.csv");
     res.render("about.ejs", {people: people});
   });
 }
