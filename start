@@ -15,6 +15,7 @@ inquire(){
   done
 }
 
+clear
 echo "How would you like to start the server?"
 echo "PRODUCTION mode will do the following:"
 echo "1) Keep the server alive even after closing this window"
