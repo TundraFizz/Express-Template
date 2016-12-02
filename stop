@@ -1,5 +1,0 @@
-kill $(ps -ax | grep server.js | grep -m1 -o '^[^ ]\+')
-clear
-echo "Server stopped!"
-echo "Start your application by executing this command:"
-echo ". start"
