@@ -21,24 +21,7 @@ sudo yum -y install gcc                           # Install GCC
 sudo yum -y install epel-release                  # Install EPEL
 sudo yum -y install nodejs npm --enablerepo=epel  # Install nodejs and npm
 
-# Ask the user if they are going to do an advanced install with NGINX
-# If yes, redirect port 80 -> 9000
-# If no, redirect port 80 -> 9001
-echo "Install NGINX and set up reverse proxy?"
-echo "If you don't know what to pick, choose no"
-inquire "Yes or No"
-nginx=$?
-
-if [[ $nginx == 1 ]]; then
-  # Redirect port 80 to 9000
-  sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 9000
-else
-  # Redirect port 80 to 9001
-  sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 9001
-
-  # Delete the NGINX configuration file since it's not needed
-  rm nginx.conf
-fi
+sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 9001
 
 sudo npm install nodemon -g  # Install nodemon globally
 npm install                  # Install the project
@@ -49,9 +32,10 @@ inquire "Yes or No"
 git=$?
 
 if [[ $git == 1 ]]; then
-  # Redirect port 80 to 9000
   rm -rf .git
+  rm .gitignore
   rm README.md
+  rm nginx.conf
 fi
 
 echo "Installation complete!"
@@ -60,3 +44,19 @@ echo ". start"
 
 # Delete this file
 rm -- "$0"
+
+#########
+# NGINX #
+#########
+
+# sudo yum -y install nginx            # Install NGINX
+# sudo chmod 777 /etc/nginx/nginx.conf # Give user permission to access nginx.conf
+# sudo nano /etc/nginx/nginx.conf      # Modify nginx.conf (example below)
+# sudo nginx                           # Start up NGINX
+
+####################
+# NGINX Management #
+####################
+# sudo nginx -s reload                                       # Do this command whenever you edit /etc/nginx/nginx.conf
+# sudo systemctl restart nginx                               # This restarts nginx
+# sudo top -c -p $(pgrep nginx | tr '\n' ',' | sed 's/.$//') # Force stop nginx

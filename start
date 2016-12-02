@@ -38,19 +38,3 @@ else
   echo "Now running in development mode"
   echo "press Ctrl+C to stop the server"
 fi
-
-#########
-# NGINX #
-#########
-
-# sudo yum -y install nginx            # Install NGINX
-# sudo chmod 777 /etc/nginx/nginx.conf # Give user permission to access nginx.conf
-# sudo nano /etc/nginx/nginx.conf      # Modify nginx.conf (example below)
-# sudo nginx                           # Start up NGINX
-
-####################
-# NGINX Management #
-####################
-# sudo nginx -s reload                                       # Do this command whenever you edit /etc/nginx/nginx.conf
-# sudo systemctl restart nginx                               # This restarts nginx
-# sudo top -c -p $(pgrep nginx | tr '\n' ',' | sed 's/.$//') # Force stop nginx
