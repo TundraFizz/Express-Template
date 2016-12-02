@@ -29,13 +29,13 @@ choice=$?
 
 if [[ $choice == 1 ]]; then
   # PRODUCTION
-  nohup node server.js &
   echo "Now running in production mode"
   echo "Stop the application by executing this command:"
   echo ". stop"
+  nohup node server.js &
 else
   # DEVELOPMENT
-  nodemon server.js
   echo "Now running in development mode"
   echo "press Ctrl+C to stop the server"
+  nodemon server.js
 fi
