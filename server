@@ -22,6 +22,7 @@ if pgrep "node" > /dev/null; then
   # If it's running, stop it
   pkill "node"
   echo "The server has been stopped!"
+  echo ""
   echo "Start your application by executing this command:"
   echo ". server"
   echo ""
