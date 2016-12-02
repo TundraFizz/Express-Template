@@ -70,9 +70,10 @@ code {
   padding:     4px;
 }
 
-bl {color: blue;}  /* Blue font for use in the <code> tag  */
-wh {color: white;} /* White font for use in the <code> tag */
-gr {color: lime;}  /* Green font for use in the <code> tag */
+or {color: #ffac42;} /* Orange font for use in the <code> tag   */
+bl {color: blue;}    /* Blue font for use in the <code> tag  */
+wh {color: white;}   /* White font for use in the <code> tag */
+gr {color: lime;}    /* Green font for use in the <code> tag */
 
 #target input {
   border: 2px solid transparent;
