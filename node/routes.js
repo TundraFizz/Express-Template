@@ -5,7 +5,6 @@ module.exports = function(app){
   // Index //
   ///////////
   app.get("/", function(req, res){
-    console.log("index");
     var string = "A string from the server.";
     var people = [
       {name: "Adam", age: 10},
