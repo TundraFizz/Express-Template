@@ -27,6 +27,7 @@ sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 9001
 sudo npm install nodemon -g  # Install nodemon globally
 npm install                  # Install the project
 
+clear
 echo "Delete Git-related files?"
 echo "If you don't know what to pick, choose yes"
 inquire "Yes or No"
