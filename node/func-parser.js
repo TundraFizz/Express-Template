@@ -27,5 +27,9 @@ module.exports = {
     }
 
     return people;
-  }
+  },
+
+  LocalTestingFunction: function(){
+    console.log("Notice how you need to put `lib.` before calling this function");
+  },
 }
