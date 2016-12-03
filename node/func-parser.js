@@ -4,7 +4,7 @@ module.exports = {
   //////////////////
   // AppendToFile //
   //////////////////
-  AppendToFile(file, data){
+  AppendToFile: function(file, data){
     var io = data["firstName"] + "," + data["lastName"] + "," + data["age"] + "\n";
     fs.appendFileSync("data/people.csv", io);
   },
@@ -12,7 +12,7 @@ module.exports = {
   /////////////////
   // CsvToObject //
   /////////////////
-  CsvToObject(file){
+  CsvToObject: function(file){
     var people = [];
     var fileContents = fs.readFileSync(file);
     var lines = fileContents.toString().split("\n");
