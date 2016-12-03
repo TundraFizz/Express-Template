@@ -1,5 +1,8 @@
 module.exports = function(app){
-  var lib = require("./func-parser.js"); // Include local libraries here
+  //////////////////////////////////
+  // Include local libraries here //
+  //////////////////////////////////
+  var lib = require("./func-parser.js");
 
   ////////////////
   // add-person //
