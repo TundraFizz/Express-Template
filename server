@@ -45,13 +45,13 @@ else
 
   if [[ $choice == 1 ]]; then
     # PRODUCTION
+    nohup node server.js &
     clear
     echo "Now running in production mode"
     echo ""
     echo "Stop the application by executing this command:"
     echo ". server"
     echo ""
-    nohup node server.js &
     rm nohup.out
   else
     # DEVELOPMENT
