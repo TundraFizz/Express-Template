@@ -15,12 +15,11 @@ inquire(){
   done
 }
 
-clear
-
 # Check if the server is running
 if pgrep "node" > /dev/null; then
   # If it's running, stop it
   pkill "node"
+  clear
   echo "The server has been stopped!"
   echo ""
   echo "Start your application by executing this command:"
@@ -28,6 +27,7 @@ if pgrep "node" > /dev/null; then
   echo ""
 else
   # Otherwise start the server
+  clear
   echo "How would you like to start the server?"
   echo ""
   echo "PRODUCTION mode will do the following:"
@@ -45,6 +45,7 @@ else
 
   if [[ $choice == 1 ]]; then
     # PRODUCTION
+    clear
     echo "Now running in production mode"
     echo ""
     echo "Stop the application by executing this command:"
@@ -54,6 +55,7 @@ else
     rm nohup.out
   else
     # DEVELOPMENT
+    clear
     echo "Now running in development mode"
     echo "press Ctrl+C to stop the server"
     echo ""
