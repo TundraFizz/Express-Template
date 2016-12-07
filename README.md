@@ -14,7 +14,7 @@ sudo yum -y install git
 mkdir myapp
 cd myapp
 git clone https://github.com/TundraFizz/NodeJS-Template.git .
-bash install.sh
+. install.sh
 ```
 
 Description:
