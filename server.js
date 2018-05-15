@@ -10,4 +10,4 @@ app.use(sass({src:   __dirname + "/static/css/sass",
               prefix: "/css",
               outputStyle: "compressed"}));
 require("./node/routes.js");                      // Include web routes third
-app.listen(9001);                                 // Start the server
+app.listen(80);                                   // Start the server
