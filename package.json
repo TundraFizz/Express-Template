@@ -6,13 +6,21 @@
   "author": "Tundra Fizz",
   "license": "ISC",
   "dependencies": {
-    "body-parser":          "latest",
-    "express":              "latest",
-    "ejs":                  "latest",
+    "axios": "latest",
+    "body-parser": "latest",
+    "cookie-parser": "latest",
+    "ejs": "latest",
+    "express": "latest",
+    "formidable": "latest",
+    "js-yaml": "latest",
+    "moment": "latest",
+    "mysql2": "latest",
     "node-sass-middleware": "latest"
   },
   "scripts": {
-    "start": "node server.js"
+    "local": "set mode=local&& nodemon server.js",
+    "dev": "set mode=dev&& nodemon server.js",
+    "prod": "set mode=prod&& node server.js"
   },
   "devDependencies": {},
   "repository": {

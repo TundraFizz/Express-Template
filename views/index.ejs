@@ -40,12 +40,10 @@
       <table border="1">
         <tr>
           <th>Name</th>
-          <th>Age</th>
         </tr>
-        <% for(var i = 0; i < people.length; i++) { %>
+        <% for(var i of people) { %>
           <tr>
-            <td><%= people[i].name %></td>
-            <td><%= people[i].age %></td>
+            <td><%= i.string %></td>
           </tr>
         <% } %>
       </table>
